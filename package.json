@@ -1,0 +1,24 @@
+{
+  "name": "k-virtuallist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/virtualList.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "zhouxiaolei",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "style-loader": "^2.0.0",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^5.15.0",
+    "webpack-cli": "^4.3.1"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^5.0.0-alpha.9"
+  }
+}
