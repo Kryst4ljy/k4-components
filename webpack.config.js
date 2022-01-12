@@ -1,23 +1,23 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'production';
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "virtualList.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/dist/",
-    library: "virtualList", // 指定使用require时的模块名
-    libraryTarget: "umd", // 指定输出格式
+    filename: 'kComponents.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
+    library: 'kComponents', // 指定使用require时的模块名
+    libraryTarget: 'umd', // 指定输出格式
     umdNamedDefine: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "virtualList",
+      title: 'kComponents',
     }),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
@@ -26,11 +26,11 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        use: ["vue-loader"],
+        use: ['vue-loader'],
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

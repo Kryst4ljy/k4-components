@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: "VirtualList",
+  name: 'VirtualList',
   props: {
     data: {
       type: Array,
@@ -61,11 +61,7 @@ export default {
       let itemCount = data.length;
       if (lastMeasuredIndex >= 0) {
         const lastMeasuredSizeAndOffset = this.getLastMeasuredSizeAndOffset();
-        return (
-          lastMeasuredSizeAndOffset.offset +
-          lastMeasuredSizeAndOffset.size +
-          (itemCount - 1 - lastMeasuredIndex) * estimatedItemSize
-        );
+        return lastMeasuredSizeAndOffset.offset + lastMeasuredSizeAndOffset.size + (itemCount - 1 - lastMeasuredIndex) * estimatedItemSize;
       } else {
         return itemCount * estimatedItemSize;
       }
@@ -74,9 +70,7 @@ export default {
   methods: {
     // 计算过高度的列表项的高度和
     getLastMeasuredSizeAndOffset() {
-      return this.lastMeasuredIndex >= 0
-        ? this.sizeAndOffsetCahce[this.lastMeasuredIndex]
-        : { offset: 0, size: 0 };
+      return this.lastMeasuredIndex >= 0 ? this.sizeAndOffsetCahce[this.lastMeasuredIndex] : { offset: 0, size: 0 };
     },
     // 获取初始项的页数
     findNearestItemIndex(scrollTop) {
@@ -106,12 +100,7 @@ export default {
     },
     // 计算偏移量，入参为可视区域起始页数
     getItemSizeAndOffset(index) {
-      const {
-        lastMeasuredIndex,
-        sizeAndOffsetCahce,
-        data,
-        itemSizeGetter,
-      } = this;
+      const { lastMeasuredIndex, sizeAndOffsetCahce, data, itemSizeGetter } = this;
       if (lastMeasuredIndex >= index) {
         return sizeAndOffsetCahce[index];
       }
@@ -141,13 +130,8 @@ export default {
       scrollTop = scrollTop || 0;
       const start = this.findNearestItemIndex(scrollTop);
       const end = this.findNearestItemIndex(scrollTop + this.$el.clientHeight);
-      this.visibleData = this.data.slice(
-        start,
-        Math.min(end + 1, this.data.length)
-      );
-      this.$refs.content.style.webkitTransform = `translate3d(0, ${
-        this.getItemSizeAndOffset(start).offset
-      }px, 0)`;
+      this.visibleData = this.data.slice(start, Math.min(end + 1, this.data.length));
+      this.$refs.content.style.webkitTransform = `translate3d(0, ${this.getItemSizeAndOffset(start).offset}px, 0)`;
     },
     // 滚动时触发
     handleScroll() {
@@ -175,7 +159,7 @@ export default {
         index = low - 1;
       }
 
-      if (typeof index === "undefined") {
+      if (typeof index === 'undefined') {
         index = 0;
       }
 
@@ -185,17 +169,10 @@ export default {
       let bound = 1;
       const data = this.data;
       const start = this.lastMeasuredIndex >= 0 ? this.lastMeasuredIndex : 0;
-      while (
-        start + bound < data.length &&
-        this.getItemSizeAndOffset(start + bound).offset < scrollTop
-      ) {
+      while (start + bound < data.length && this.getItemSizeAndOffset(start + bound).offset < scrollTop) {
         bound = bound * 2;
       }
-      return this.binarySearch(
-        start + Math.floor(bound / 2),
-        Math.min(start + bound, data.length),
-        scrollTop
-      );
+      return this.binarySearch(start + Math.floor(bound / 2), Math.min(start + bound, data.length), scrollTop);
     },
   },
 };
@@ -203,13 +180,13 @@ export default {
 
 
 <style scoped>
-.list-view {
-  /* width: 500px;
+/* .list-view {
+  width: 500px;
   height: 400px;
   overflow: auto;
   position: relative;
-  border: 1px solid #aaa; */
-}
+  border: 1px solid #aaa;
+} */
 
 .list-view-phantom {
   position: absolute;

@@ -1,8 +1,8 @@
 {
-  "name": "k-virtuallist",
+  "name": "k-components",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/virtualList.js",
+  "main": "dist/kComponents.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
