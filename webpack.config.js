@@ -6,13 +6,17 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 process.env.NODE_ENV = 'production';
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app: ['./src/index.js'],
+  },
   output: {
-    filename: 'kComponents.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
-    library: 'kComponents', // 指定使用require时的模块名
+    filename: 'index.js',
+    chunkFilename: '[id].js',
+    library: 'KCOMPONENTS', // 指定使用require时的模块名
     libraryTarget: 'umd', // 指定输出格式
+    libraryExport: 'default',
     umdNamedDefine: true,
   },
   plugins: [

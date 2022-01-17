@@ -25,11 +25,11 @@
 
 <script>
 export default {
+  name: 'SelectTree',
   destroyed() {
     // console.log('销毁事件');
     // this.resetData(true);
   },
-  name: 'Pagination',
   props: {
     // 接收绑定参数
     value: {

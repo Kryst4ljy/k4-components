@@ -1,15 +1,24 @@
-import VirtualList from './components/VirtualList/VirtualList.vue';
-import SelectTree from './components/SelectTree/SelectTree.vue';
+import SelectTree from '../packages/SelectTree/index.js';
+import VirtualList from '../packages/VirtualList/index.js';
 
-// 注册组件
-VirtualList.install = (Vue) => Vue.component(VirtualList.name, VirtualList); // 虚拟列表组件
-SelectTree.install = (Vue) => Vue.component(VirtualList.name, VirtualList); // 树形下拉框组件
+const components = [SelectTree, VirtualList];
 
+const install = (Vue) => {
+  // 注册组件
+  components.forEach((component) => {
+    Vue.component(component.name, component);
+  });
+
+  // 这里可以操作Vue
+  // Vue.prototype.$message = Message;
+};
+
+/* istanbul ignore if */
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
 export default {
-  VirtualList,
   SelectTree,
+  VirtualList,
 };

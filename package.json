@@ -1,8 +1,8 @@
 {
   "name": "k4-components",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/kComponents.js",
+  "version": "1.0.6",
+  "description": "components for kryst4l",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
@@ -13,7 +13,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",
     "style-loader": "^2.0.0",
-    "vue-loader": "^15.9.6",
+    "vue-loader": "^15.9.8",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^5.15.0",
     "webpack-cli": "^4.3.1"
