@@ -1,16 +1,19 @@
+/**
+ * @name webpack.prod.js
+ * @description 组件打包webpack配置
+ */
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
-process.env.NODE_ENV = 'production';
 
 module.exports = {
   entry: {
     app: ['./src/index.js'],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(process.cwd(), 'dist'),
     publicPath: '/dist/',
     filename: 'index.js',
     chunkFilename: '[id].js',

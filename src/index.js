@@ -1,7 +1,8 @@
 import SelectTree from '../packages/SelectTree/index.js';
 import VirtualList from '../packages/VirtualList/index.js';
+import FilterBar from '../packages/FilterBar/index.js';
 
-const components = [SelectTree, VirtualList];
+const components = [SelectTree, VirtualList, FilterBar];
 
 const install = (Vue) => {
   // 注册组件
@@ -19,6 +20,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
+  install,
   SelectTree,
   VirtualList,
+  FilterBar,
 };
