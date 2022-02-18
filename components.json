@@ -1,3 +1,5 @@
 {
-  "test": 1
+  "SelectTree": "./packages/SelectTree/index.js",
+  "VirtualList": "./packages/VirtualList/index.js",
+  "FilterBar": "./packages/FilterBar/index.js"
 }
