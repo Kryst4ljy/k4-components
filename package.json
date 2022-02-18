@@ -1,6 +1,6 @@
 {
   "name": "k4-components",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "components for kryst4l",
   "main": "dist/index.js",
   "scripts": {
