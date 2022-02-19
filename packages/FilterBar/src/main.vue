@@ -55,7 +55,7 @@
           <el-row :gutter="20">
             <el-col class="button-col" :span="20">
               <el-button type="primary" @click="handleSearch">搜索</el-button>
-              <el-button type="warning">重置</el-button>
+              <el-button type="warning" @click="handleReset">重置</el-button>
               <slot name="button"></slot>
             </el-col>
           </el-row>
@@ -87,6 +87,10 @@ export default {
     // 点击搜索
     handleSearch() {
       this.$emit('handleSearch', this.form);
+    },
+    // 点击重置
+    handleReset() {
+      this.form = {};
     },
   },
 };

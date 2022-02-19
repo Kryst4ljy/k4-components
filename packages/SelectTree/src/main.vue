@@ -71,7 +71,7 @@ export default {
     };
   },
   created() {
-    console.log('初始化value值', this.value);
+    // console.log('初始化value值', this.value);
     // 获取输入框宽度同步至树状菜单宽度
     this.$nextTick(() => {
       // 初始化赋值
@@ -87,8 +87,12 @@ export default {
       // 隐藏select自带的下拉框
       this.$refs.select.blur();
     },
-    value() {
-      // console.log('监听到了value变化');
+    value(val, oldVal) {
+      // console.log('监听到了value变化', val, oldVal);
+      if (val.length === 0 && oldVal.length !== 0) {
+        this.resetData();
+        return;
+      }
       this.initData();
     },
   },
@@ -118,13 +122,11 @@ export default {
       });
     },
     // 重置
-    resetData(f) {
+    resetData() {
       // console.log('重置');
-      if (!f) {
-        this.selectedData.forEach((m) => {
-          this.$refs.tree.setChecked(m, false);
-        });
-      }
+      this.selectedData.forEach((m) => {
+        this.$refs.tree.setChecked(m, false);
+      });
       this.selectedData = [];
       this.$emit('change', this.selectedData);
     },
