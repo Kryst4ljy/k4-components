@@ -39,6 +39,29 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]--[local]__[hash:base64:5]',
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
     ],
   },
 };

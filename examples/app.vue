@@ -109,7 +109,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 html,
 body {
   width: 100%;
@@ -134,7 +134,7 @@ body {
 }
 
 .el-main {
-  background-color: #e9eef3;
+  background-color: #f0f2f5;
   color: #333;
   text-align: center;
 }
