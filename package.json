@@ -18,6 +18,8 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "json-templater": "^1.2.0",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.6.0",
     "style-loader": "^2.0.0",
     "uppercamelcase": "^3.0.0",
     "vue": "^2.6.14",

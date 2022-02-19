@@ -30,6 +30,10 @@ export default {
     // console.log('销毁事件');
     // this.resetData(true);
   },
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
   props: {
     // 接收绑定参数
     value: {

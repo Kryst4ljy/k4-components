@@ -33,6 +33,10 @@ module.exports = {
         test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
         loader: 'file-loader',
       },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: './examples/public/index.html', title: '组件本地测试' }), new CleanWebpackPlugin(), new VueLoaderPlugin()],
