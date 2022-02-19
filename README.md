@@ -65,4 +65,10 @@ Vue.component(SelectTree.name, SelectTree);
 - options：树形组件传入的选项数据，按照ElementUI的Tree组件options；
 - placeholder：树形组件输入框占位符；
 
+## 3. FilterBar - 后台页面通用筛选器组件
+![截屏2022-02-19 下午3 00 15](https://user-images.githubusercontent.com/42908230/154790545-5a8f8b75-4c96-414d-ab79-ff05ce6d1be3.png)
+
+### 入参说明
+- config：配置
+
 
