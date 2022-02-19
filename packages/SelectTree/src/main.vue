@@ -7,7 +7,7 @@
     <!-- 2021.09.28新增 若需开放则删除下方隐藏删除按钮样式 el-tag__close -->
     <el-select
       slot="reference"
-      :style="`width: ${width || '300'}px`"
+      :style="`width: ${width || '300px'}`"
       ref="select"
       v-model="selectedData"
       multiple
@@ -70,13 +70,13 @@ export default {
       filterText: '',
     };
   },
-  created() {
+  mounted() {
     // console.log('初始化value值', this.value);
     // 获取输入框宽度同步至树状菜单宽度
     this.$nextTick(() => {
       // 初始化赋值
       this.initData();
-      this.treeWidth = `${(this.width || this.$refs.select.$children[0].$refs.input.clientWidth) - 24}px`;
+      this.treeWidth = `${this.$refs.select.$children[0].$refs.input.clientWidth - 24}px`;
     });
   },
   watch: {

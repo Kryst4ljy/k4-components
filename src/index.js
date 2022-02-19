@@ -1,8 +1,14 @@
 import SelectTree from '../packages/SelectTree/index.js';
 import VirtualList from '../packages/VirtualList/index.js';
 import FilterBar from '../packages/FilterBar/index.js';
+import DialogForm from '../packages/DialogForm/index.js';
 
-const components = [SelectTree, VirtualList, FilterBar];
+const components = [
+  SelectTree,
+  VirtualList,
+  FilterBar,
+  DialogForm
+];
 
 const install = (Vue) => {
   // 注册组件
@@ -24,4 +30,5 @@ export default {
   SelectTree,
   VirtualList,
   FilterBar,
+  DialogForm
 };

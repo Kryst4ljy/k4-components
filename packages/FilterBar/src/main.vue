@@ -13,6 +13,13 @@
                 <span>{{ `${item.label}：` }}</span>
                 <el-input v-model="form[item.key]" :placeholder="item.placeholder" clearable></el-input>
               </div>
+              <!-- input-range 范围输入框 -->
+              <div v-if="item.type === 'k-input-range'" :class="$style['grid-content']">
+                <span>{{ `${item.label}：` }}</span>
+                <el-col :span="11" :style="{ padding: '0px' }"><el-input v-model="form[item.key[0]]" :placeholder="item.placeholder[0]" clearable></el-input></el-col>
+                <el-col :span="2" :style="{ padding: '0px' }" :class="$style.line">-</el-col>
+                <el-col :span="11" :style="{ padding: '0px' }"><el-input v-model="form[item.key[1]]" :placeholder="item.placeholder[1]" clearable></el-input></el-col>
+              </div>
               <!-- select - 选择器 -->
               <div v-if="item.type === 'k-select'" :class="$style['grid-content']">
                 <span>{{ `${item.label}：` }}</span>
@@ -54,8 +61,8 @@
           <!-- 按钮 -->
           <el-row :gutter="20">
             <el-col class="button-col" :span="20">
-              <el-button type="primary" @click="handleSearch">搜索</el-button>
-              <el-button type="warning" @click="handleReset">重置</el-button>
+              <el-button type="primary" @click="handleSearch">搜 索</el-button>
+              <el-button type="warning" @click="handleReset">重 置</el-button>
               <slot name="button"></slot>
             </el-col>
           </el-row>
@@ -110,12 +117,21 @@ export default {
   margin-bottom: 10px;
   padding: 14px 14px 0px 14px;
 
+  .line {
+    line-height: 40px;
+    text-align: center;
+    overflow: hidden;
+  }
+
   :global {
     .el-select {
       width: 100%;
       .el-tag {
         max-width: 50% !important;
       }
+    }
+    .el-input--suffix .el-input__inner {
+      padding-right: 15px;
     }
     .el-select__tags {
       width: 20px;
