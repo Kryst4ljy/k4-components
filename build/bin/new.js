@@ -10,6 +10,7 @@ if (!process.argv[2]) {
   return;
 }
 
+const componentname = process.argv[2]; // 小写组件名 - 用于创建 scss 文件
 const componentName = uppercamelcase(process.argv[2]); // 新建组件名
 const componentPath = path.join(__dirname, '../../components.json'); // components.json 绝对路径
 
@@ -27,7 +28,7 @@ fileSave(componentPath, JSON.stringify(componentsConf, null, '  '));
 const packagePath = path.join(__dirname, '../../packages', componentName); // 当前组件绝对路径
 const tempFile = [
   {
-    filename: 'index.js',
+    filename: path.join(packagePath, 'index.js'),
     content: `import ${componentName} from './src/main.vue';
 
 /* istanbul ignore next */
@@ -38,7 +39,7 @@ ${componentName}.install = function (Vue) {
 export default ${componentName};`,
   },
   {
-    filename: 'src/main.vue',
+    filename: path.join(packagePath, 'src/main.vue'),
     content: `<template>
   <div></div>
 </template>
@@ -49,9 +50,18 @@ export default {
 };
 </script>`,
   },
+  {
+    filename: path.join(__dirname, '../../packages/theme-chalk/src', `${componentname}.scss`),
+    content: ``,
+  },
 ];
 tempFile.forEach((m) => {
-  fileSave(path.join(packagePath, m.filename), m.content);
+  fileSave(m.filename, m.content);
 });
+
+// 5.将组件样式文件添加到 index.scss
+const sassPath = path.join(__dirname, '../../packages/theme-chalk/src/index.scss');
+const sassImportText = `${fs.readFileSync(sassPath)}@import "./${componentname}.scss";`;
+fileSave(sassPath, sassImportText);
 
 console.log('Done!');

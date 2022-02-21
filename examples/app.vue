@@ -12,7 +12,16 @@
             </template>
           </FilterBar>
           <!-- 弹窗 -->
-          <DialogForm :dialogVisible="dialogVisible" :dialogModal="dialogModal" :dialogRules="dialogRules" :title="title" :width="width" @dialogClose="dialogClose"></DialogForm>
+          <DialogForm
+            :dialogVisible="dialogVisible"
+            :dialogModal="dialogModal"
+            :dialogRules="dialogRules"
+            :title="title"
+            :width="width"
+            @dialogClose="dialogClose"
+            @dialogSubmit="dialogSubmit"
+          ></DialogForm>
+          <Table :tableData="tableData" :tableModal="tableModal"></Table>
         </el-main>
       </el-container>
     </el-container>
@@ -111,7 +120,7 @@ export default {
       // DialogForm 配置
       title: '测试', // 标题
       width: '500px', // 宽度
-      dialogVisible: true, // 显示与否
+      dialogVisible: false, // 显示与否
       dialogModal: [
         {
           type: 'k-input',
@@ -234,6 +243,43 @@ export default {
         key9: [{ type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }],
         key10: [{ required: true, message: '请选择活动资源', trigger: 'change' }],
       },
+      // Table 配置
+      tableData: [
+        {
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1517 弄',
+        },
+        {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1519 弄',
+        },
+        {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1516 弄',
+        },
+      ],
+      tableModal: [
+        { prop: 'date', label: '时间', width: '120' },
+        { prop: 'name', label: '名字', width: '120' },
+        { prop: 'address', label: '地址', width: '260' },
+        {
+          label: '操作',
+          width: '260',
+          render: (params) => {
+            return <span>123</span>;
+          },
+        },
+        { label: '操作', width: '260' },
+        { label: '操作', width: '260' },
+      ],
     };
   },
   methods: {
@@ -247,6 +293,10 @@ export default {
     // 显示弹窗
     dialogShow() {
       this.dialogVisible = true;
+    },
+    // 弹窗提交
+    dialogSubmit(form) {
+      console.log('form', form);
     },
   },
 };

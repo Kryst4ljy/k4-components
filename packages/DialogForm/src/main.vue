@@ -2,7 +2,7 @@
   <div>
     <el-dialog :title="title" :visible.sync="dialogVisible" :width="width" :before-close="handleClose">
       <!-- 表格部分 -->
-      <div :class="$style.dialogForm">
+      <div class="k4-dialogForm">
         <el-form ref="form" :model="form" :rules="dialogRules" label-width="100px">
           <div v-for="(item, index) in dialogModal" :key="index">
             <!-- k-input 输入框 -->
@@ -20,7 +20,7 @@
                   <el-input v-model="form[item.key[0]]" :placeholder="item.placeholder[0]" clearable></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="2" :style="{ padding: '0px' }" :class="$style.line">-</el-col>
+              <el-col :span="2" :style="{ padding: '0px' }" class="k4-dialogForm-line">-</el-col>
               <el-col :span="11" :style="{ padding: '0px' }">
                 <el-form-item :prop="item.key[1]">
                   <el-input v-model="form[item.key[1]]" :placeholder="item.placeholder[1]" clearable></el-input>
@@ -160,38 +160,13 @@ export default {
     // 点击确定
     handleSubmit() {
       this.$refs['form'].validate((valid) => {
-        if (valid) {
-          console.log('form', this.form);
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
+        valid && this.$emit('dialogSubmit', this.form);
       });
     },
     // 点击充值
     handleReset() {
       this.$refs['form'].resetFields();
-      console.log(this.form);
     },
   },
 };
 </script>
-
-<style lang="scss" module>
-.dialogForm {
-  width: 100%;
-  min-height: 200px;
-  // background-color: pink;
-
-  .line {
-    text-align: center;
-  }
-
-  :global {
-    .el-range-separator {
-      font-size: 10px !important;
-      width: 10% !important;
-    }
-  }
-}
-</style>

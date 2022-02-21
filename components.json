@@ -2,5 +2,6 @@
   "SelectTree": "./packages/SelectTree/index.js",
   "VirtualList": "./packages/VirtualList/index.js",
   "FilterBar": "./packages/FilterBar/index.js",
-  "DialogForm": "./packages/DialogForm/index.js"
+  "DialogForm": "./packages/DialogForm/index.js",
+  "Table": "./packages/Table/index.js"
 }
