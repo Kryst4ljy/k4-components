@@ -52,7 +52,7 @@ export default {
   },
   {
     filename: path.join(__dirname, '../../packages/theme-chalk/src', `${componentname}.scss`),
-    content: ``,
+    content: `@import 'mixins/mixins';`,
   },
 ];
 tempFile.forEach((m) => {

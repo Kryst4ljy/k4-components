@@ -1,37 +1,45 @@
-.k4-filter-title {
-  width: 100%;
-  padding-left: 14px;
-  text-align: left;
-  .k4-filter-icon {
-    margin-right: 4px;
-  }
-}
-.k4-filter-content {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 14px 14px 0px 14px;
+@import 'mixins/mixins';
 
-  .k4-filter-line {
-    line-height: 40px;
-    text-align: center;
-    overflow: hidden;
-  }
-}
-.k4-filter-item {
-  min-height: 40px;
-  margin-bottom: 18px;
-  display: flex;
-  > span {
-    flex: none;
-    height: 40px;
-    overflow: hidden;
-    color: rgba(0, 0, 0, 0.85);
-    font-size: 14px;
-    line-height: 40px;
+@include b(filter) {
+  @include e(title) {
+    width: 100%;
+    padding-left: 14px;
     text-align: left;
+
+    @include m(icon) {
+      margin-right: 4px;
+    }
   }
-  .k4-filter-item-inner {
-    flex: 1;
+
+  @include e(content) {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 14px 14px 0px 14px;
+
+    @include m(line) {
+      line-height: 40px;
+      text-align: center;
+      overflow: hidden;
+    }
+  }
+
+  @include e(item) {
+    min-height: 40px;
+    margin-bottom: 18px;
+    display: flex;
+    > span {
+      flex: none;
+      height: 40px;
+      overflow: hidden;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 14px;
+      line-height: 40px;
+      text-align: left;
+    }
+
+    @include m(inner) {
+      flex: 1 !important;
+    }
   }
 }
 

@@ -21,7 +21,7 @@
             @dialogClose="dialogClose"
             @dialogSubmit="dialogSubmit"
           ></DialogForm>
-          <Table :tableData="tableData" :tableModal="tableModal"></Table>
+          <Table :tableData="tableData" :tableModal="tableModal" multiple></Table>
         </el-main>
       </el-container>
     </el-container>
@@ -277,8 +277,6 @@ export default {
             return <span>123</span>;
           },
         },
-        { label: '操作', width: '260' },
-        { label: '操作', width: '260' },
       ],
     };
   },

@@ -1,0 +1,50 @@
+@import 'config';
+
+// BEM
+// 块 - 组件名（顶级类名）如：el-table
+@mixin b($block) {
+  $B: $namespace + '-' + $block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+// 元素 - 顶级类名__元素类名 如：el-table__input
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: '';
+
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
+  }
+
+  // @at-root {
+  //   #{$selector} {
+  //     #{$currentSelector} {
+  //       @content;
+  //     }
+  //   }
+  // }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+// 修饰符 - 顶级类名/元素类名--修饰符类名 如：el-table--empty-text
+@mixin m($modifier) {
+  $currentSelector: '';
+
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}

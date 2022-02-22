@@ -3,37 +3,37 @@
     <el-collapse v-model="actName" accordion>
       <el-collapse-item name="1">
         <template slot="title">
-          <div class="k4-filter-title"><i class="k4-filter-icon el-icon-document"></i>筛选项</div>
+          <div class="k4-filter__title"><i class="k4-filter__title--icon el-icon-document"></i>筛选项</div>
         </template>
-        <div class="k4-filter-content">
+        <div class="k4-filter__content">
           <el-row :gutter="20">
             <el-col :span="6" v-for="(item, index) in config" :key="index">
               <!-- input - 输入框 -->
-              <div v-if="item.type === 'k-input'" class="k4-filter-item">
+              <div v-if="item.type === 'k-input'" class="k4-filter__item">
                 <span>{{ `${item.label}：` }}</span>
                 <el-input v-model="form[item.key]" :placeholder="item.placeholder" clearable></el-input>
               </div>
               <!-- input-range 范围输入框 -->
-              <div v-if="item.type === 'k-input-range'" class="k4-filter-item">
+              <div v-if="item.type === 'k-input-range'" class="k4-filter__item">
                 <span>{{ `${item.label}：` }}</span>
                 <el-col :span="11" :style="{ padding: '0px' }"><el-input v-model="form[item.key[0]]" :placeholder="item.placeholder[0]" clearable></el-input></el-col>
-                <el-col :span="2" :style="{ padding: '0px' }" class="k4-filter-line">-</el-col>
+                <el-col :span="2" :style="{ padding: '0px' }" class="k4-filter__content--line">-</el-col>
                 <el-col :span="11" :style="{ padding: '0px' }"><el-input v-model="form[item.key[1]]" :placeholder="item.placeholder[1]" clearable></el-input></el-col>
               </div>
               <!-- select - 选择器 -->
-              <div v-if="item.type === 'k-select'" class="k4-filter-item">
+              <div v-if="item.type === 'k-select'" class="k4-filter__item">
                 <span>{{ `${item.label}：` }}</span>
-                <el-select class="k4-filter-item-inner" v-model="form[item.key]" :multiple="item.multiple" :collapse-tags="true" :placeholder="item.placeholder" filterable clearable>
+                <el-select class="k4-filter__item--inner" v-model="form[item.key]" :multiple="item.multiple" :collapse-tags="true" :placeholder="item.placeholder" filterable clearable>
                   <el-option v-for="(m, i) in item.options" :key="`${i}-${m.value}`" :label="m.label" :value="m.value"></el-option>
                 </el-select>
               </div>
               <!-- select-tree - 树形选择器 -->
-              <div v-if="item.type === 'k-select-tree'" class="k4-filter-item">
+              <div v-if="item.type === 'k-select-tree'" class="k4-filter__item">
                 <span>{{ `${item.label}：` }}</span>
-                <SelectTree class="k4-filter-item-inner" v-model="form[item.key]" :width="'100%'" :options="item.options" :placeholder="item.placeholder"></SelectTree>
+                <SelectTree class="k4-filter__item--inner" v-model="form[item.key]" :width="'100%'" :options="item.options" :placeholder="item.placeholder"></SelectTree>
               </div>
               <!-- date-picker-singer 单个日期选择器 -->
-              <div v-if="item.type === 'k-date-picker-singer'" class="k4-filter-item">
+              <div v-if="item.type === 'k-date-picker-singer'" class="k4-filter__item">
                 <span>{{ `${item.label}：` }}</span>
                 <el-date-picker
                   v-model="form[item.key]"
@@ -44,7 +44,7 @@
                 ></el-date-picker>
               </div>
               <!-- date-picker-range 范围日期选择器 -->
-              <div v-if="item.type === 'k-date-picker-range'" class="k4-filter-item">
+              <div v-if="item.type === 'k-date-picker-range'" class="k4-filter__item">
                 <span>{{ `${item.label}：` }}</span>
                 <el-date-picker
                   v-model="form[item.key]"

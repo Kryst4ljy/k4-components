@@ -1,9 +1,11 @@
-.k4-dialogForm {
+@import 'mixins/mixins';
+
+@include b(dialogForm) {
   width: 100%;
   min-height: 200px;
   // background-color: pink;
 
-  .k4-dialogForm-line {
+  @include m(line) {
     text-align: center;
   }
 }

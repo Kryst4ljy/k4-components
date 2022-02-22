@@ -20,7 +20,7 @@
                   <el-input v-model="form[item.key[0]]" :placeholder="item.placeholder[0]" clearable></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="2" :style="{ padding: '0px' }" class="k4-dialogForm-line">-</el-col>
+              <el-col :span="2" :style="{ padding: '0px' }" class="k4-dialogForm--line">-</el-col>
               <el-col :span="11" :style="{ padding: '0px' }">
                 <el-form-item :prop="item.key[1]">
                   <el-input v-model="form[item.key[1]]" :placeholder="item.placeholder[1]" clearable></el-input>
