@@ -345,3 +345,11 @@ export default {
 };
 </script>
 ```
+
+## 5. Table - 后台页面通用表格组件
+<img width="587" alt="截屏2022-02-20 上午1 14 36" src="https://user-images.githubusercontent.com/42908230/154811418-67fbea95-147e-49fd-846f-f87c515ab9b1.png">
+
+### 入参说明
+- row-key：行
+
+下面为一个示例 👇👇👇
