@@ -5,12 +5,6 @@
       <el-container>
         <el-header height="64px">Header</el-header>
         <el-main>
-          <!-- 筛选 -->
-          <FilterBar :config="filterData" @handleSearch="handleSearch">
-            <template v-slot:button>
-              <el-button type="success" @click="dialogShow">添 加</el-button>
-            </template>
-          </FilterBar>
           <!-- 弹窗 -->
           <DialogForm
             :dialogVisible="dialogVisible"
@@ -21,7 +15,22 @@
             @dialogClose="dialogClose"
             @dialogSubmit="dialogSubmit"
           ></DialogForm>
-          <Table :tableData="tableData" :tableModal="tableModal" multiple></Table>
+          <!-- 筛选 -->
+          <FilterBar :config="filterData" @handleSearch="handleSearch">
+            <template v-slot:button>
+              <el-button type="success" @click="dialogShow">添 加</el-button>
+            </template>
+          </FilterBar>
+          <!-- 表格 -->
+          <Table
+            ref="table"
+            :row-key="'id'"
+            :tableData="tableData"
+            :tableModal="tableModal"
+            :rowSelection="rowSelection"
+            :extend-render="extendRender"
+            @pageChange="pageChange"
+          ></Table>
         </el-main>
       </el-container>
     </el-container>
@@ -244,28 +253,47 @@ export default {
         key10: [{ required: true, message: '请选择活动资源', trigger: 'change' }],
       },
       // Table 配置
-      tableData: [
-        {
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-        },
-        {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄',
-        },
-        {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄',
-        },
-        {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄',
-        },
-      ],
+      tableData: {
+        total: 201,
+        data: [
+          {
+            id: 1,
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 12313123123121518 弄',
+          },
+          {
+            id: 2,
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 12313123123121518 弄',
+          },
+          {
+            id: 3,
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 12313123123121518 弄',
+          },
+          {
+            id: 4,
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 12313123123121518 弄',
+          },
+          {
+            id: 5,
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 12313123123121518 弄',
+          },
+          {
+            id: 6,
+            date: '2016-05-02',
+            name: 'end',
+            address: '上海市普陀区金沙江路 12313123123121518 弄',
+          },
+        ],
+      },
       tableModal: [
         { prop: 'date', label: '时间', width: '120' },
         { prop: 'name', label: '名字', width: '120' },
@@ -274,10 +302,14 @@ export default {
           label: '操作',
           width: '260',
           render: (params) => {
-            return <span>123</span>;
+            return <el-button onClick={() => this.test(params)}>测试</el-button>;
           },
         },
       ],
+      rowSelection: {
+        selectedRowKeys: [], // 选中的列表数据 - 此选项传入开启多选
+        defaultRowKeys: () => [this.tableData['data'][0]], // 默认选中的数据 - 传入源数据选项
+      },
     };
   },
   methods: {
@@ -295,6 +327,22 @@ export default {
     // 弹窗提交
     dialogSubmit(form) {
       console.log('form', form);
+    },
+    // 表格测试
+    test(params) {
+      console.log(params);
+    },
+    // 表格头 - 额外渲染 jsx
+    extendRender() {
+      return (
+        <el-button type="info" plain onClick={() => this.$refs['table'].handleSelectionClear()}>
+          清 除
+        </el-button>
+      );
+    },
+    // 表格 page 或 limit 改变后回调函数
+    pageChange(page, limit) {
+      console.log(page, limit);
     },
   },
 };
